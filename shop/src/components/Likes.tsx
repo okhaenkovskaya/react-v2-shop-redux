@@ -1,9 +1,14 @@
 import {useDispatch, useSelector} from "react-redux";
 import {addLikeAction, deleteLikeAction} from "../store/likesReducer.tsx"
+interface RootState {
+    likes: {
+        like: number;
+    }
+}
 
 const Likes = () => {
     const dispatch = useDispatch();
-    const like: number = useSelector((state: any) => state.likes.like);
+    const like: number = useSelector((state: RootState) => state.likes.like);
 
     const addLike = ():void => {
         dispatch(addLikeAction(1));
