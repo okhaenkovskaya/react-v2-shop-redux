@@ -2,6 +2,12 @@ import {useDispatch, useSelector} from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import {addTaskAction, deleteTaskAction} from "../store/tasksReducer.tsx";
 
+interface RootState {
+    tasks: {
+        tasks: Task[];
+    }
+}
+
 type Task = {
     title: string;
     id: string;
@@ -9,7 +15,7 @@ type Task = {
 
 const Tasks = () => {
     const dispatch = useDispatch();
-    const tasks: Task[] = useSelector((state: any) => state.tasks.tasks);
+    const tasks: Task[] = useSelector((state: RootState) => state.tasks.tasks);
 
     const addTask = (title: string) => {
         const task: Task = {
